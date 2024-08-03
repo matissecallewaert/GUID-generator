@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guid Generator</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #000000;
+        margin: 0;
+      }
+      #body {
+        background-color: #ffffff;
+        color: #333;
+        width: 420px;
+        padding: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        margin: 0 auto;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        color: #ffffff;
+        background-color: #000000;
+        margin-bottom: 15px;
+        font-weight: 600;
+        text-align: left;
+        padding-left: 15px;
+        font-size: x-large;
+      }
+
+      #banner {
+        height: 80px;
+        width: 100%;
+        background-color: #000000;
+        display: flex;
+        align-items: center;
+      }
+
+      input[type="text"] {
+        width: calc(100% - 20px);
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 15px;
+        transition: border-color 0.3s ease;
+      }
+
+      input[type="text"]:focus {
+        border-color: #4e73df;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.2);
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+      }
+
+      .button {
+        flex: 1;
+        margin: 0 5px;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: #000000;
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .button:disabled {
+        background-color: #6f6f6f;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+
+      .button:hover:not(:disabled) {
+        background-color: #2f2f2f;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Ensure content starts from the top */
+        padding: 0;
+        margin-top: 15px;
+        max-height: 200px;
+        overflow-y: auto;
+        scrollbar-width: none;
+      }
+
+      ul::-webkit-scrollbar {
+        display: none;
+      }
+
+      li {
+        width: 95%;
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        margin-bottom: 8px;
+        background-color: #fefefe;
+        border-radius: 8px;
+        box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      li:first-child {
+        margin-top: 8px; /* Reduced top margin */
+      }
+
+      li:hover {
+        transform: translateY(-2px);
+        box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.12);
+      }
+
+      .guid-text {
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 14px;
+        margin-right: 10px;
+      }
+
+      .delete-btn {
+        background: none;
+        border: none;
+        color: #ff6b6b;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease;
+      }
+
+      .delete-btn:hover {
+        color: #e63946;
+      }
+
+      .copy-btn {
+        background: none;
+        border: none;
+        color: #4e73df;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease;
+      }
+
+      .copied {
+        color: #33e02a;
+      }
+
+      p {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      #guid {
+        font-weight: bold;
+      }
+
+      .name {
+        font-weight: bold;
+        color: #333;
+        overflow-x: scroll;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="banner">
+      <h1>GUID Generator</h1>
+    </div>
+    <div id="body">
+      <input type="text" id="nameInput" placeholder="Enter name" />
+      <input type="text" id="guid" placeholder="Guid" />
+      <div class="button-container">
+        <button class="button" id="generateButton">Generate GUID</button>
+        <button class="button" id="saveButton" disabled>Save GUID</button>
+      </div>
+      <ul id="guidList"></ul>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
