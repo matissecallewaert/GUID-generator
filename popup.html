@@ -191,6 +191,16 @@
         display: flex;
         justify-content: space-between;
       }
+
+      .guidInput {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #copyButton {
+        transform: translateY(-7.5px);
+      }
     </style>
   </head>
   <body>
@@ -199,7 +209,12 @@
     </div>
     <div id="body">
       <input type="text" id="nameInput" placeholder="Enter name" />
-      <input type="text" id="guid" placeholder="Guid" />
+      <div class="guidInput">
+        <input type="text" id="guid" placeholder="Guid" />
+        <button class="copy-btn" id="copyButton">
+          <i class="fas fa-copy"></i>
+        </button>
+      </div>
       <div class="button-container">
         <button class="button" id="generateButton">Generate GUID</button>
         <button class="button" id="saveButton" disabled>Save GUID</button>

@@ -17,13 +17,28 @@ function generateGUID() {
   )}-${guid.substring(16, 20)}-${guid.substring(20)}`;
 }
 
+document.getElementById("copyButton").addEventListener("click", function () {
+  const guid = document.getElementById("guid").value.trim();
+  navigator.clipboard.writeText(guid);
+
+  const copyIcon = this.querySelector(".fas");
+
+  copyIcon.classList.remove("fa-copy");
+  copyIcon.classList.add("fa-check");
+  this.classList.add("copied");
+  setTimeout(() => {
+    copyIcon.classList.remove("fa-check");
+    copyIcon.classList.add("fa-copy");
+    this.classList.remove("copied");
+  }, 3000);
+});
+
 document
   .getElementById("generateButton")
   .addEventListener("click", function () {
     const guid = generateGUID();
     document.getElementById("guid").value = guid;
 
-    // Enable save button and store the GUID in a data attribute
     const saveButton = document.getElementById("saveButton");
     saveButton.disabled = false;
     saveButton.dataset.guid = guid;
@@ -110,5 +125,5 @@ function deleteSavedGUID(index) {
     displaySavedGUIDs();
   }
 }
-// Display saved GUIDs on load
+
 document.addEventListener("DOMContentLoaded", displaySavedGUIDs);
